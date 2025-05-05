@@ -21,49 +21,14 @@ El proyecto sigue una arquitectura limpia con las siguientes capas:
 * `serverless.template` - Plantilla de AWS CloudFormation Serverless Application Model para declarar funciones Serverless y otros recursos AWS
 * `aws-lambda-tools-defaults.json` - Configuración de argumentos predeterminados para usar con Visual Studio y herramientas de línea de comandos de AWS
 * `LambdaEntryPoint.cs` - Clase que deriva de **Amazon.Lambda.AspNetCoreServer.APIGatewayProxyFunction**. El código en este archivo inicializa el framework de hosting de .NET Core.
-* `LocalEntryPoint.cs` - Para desarrollo local, contiene la función Main ejecutable que inicializa el framework de hosting de .NET Core con Kestrel.
 * `Startup.cs` - Clase Startup habitual de .NET Core utilizada para configurar los servicios que .NET Core utilizará.
 * `appsettings.json` - Utilizado para desarrollo local.
 
 ## Guía de Despliegue
 
-### Desde Visual Studio:
-
-Para desplegar su aplicación Serverless:
-1. Haga clic derecho en el proyecto en el Explorador de soluciones
-2. Seleccione *Publicar en AWS Lambda*
-
-Para ver su aplicación desplegada:
-1. Abra la ventana Vista de Stack haciendo doble clic en el nombre de la pila que se muestra debajo del nodo AWS CloudFormation en el árbol del Explorador de AWS
-2. La Vista de Stack también muestra la URL raíz de su aplicación publicada
-
-### Desde la Línea de Comandos:
-
-1. Instale Amazon.Lambda.Tools Global Tools si aún no está instalado:
-```bash
-dotnet tool install -g Amazon.Lambda.Tools
-```
-
-2. Si ya está instalado, verifique si hay una nueva versión disponible:
-```bash
-dotnet tool update -g Amazon.Lambda.Tools
-```
-
-3. Ejecute las pruebas unitarias:
-```bash
-cd "VirtualMachinesCore/test/VirtualMachinesCore.Tests"
-dotnet test
-```
-
-4. Despliegue la aplicación:
-```bash
-cd "VirtualMachinesCore/src/VirtualMachinesCore"
-dotnet lambda deploy-serverless
-```
-
 ## Requisitos del Sistema
 
-* .NET Core SDK 6.0 o superior
+* .NET Core SDK 8.0 o superior
 * Visual Studio 2022 o superior (opcional)
 * AWS CLI configurado con credenciales válidas
 * Cuenta de AWS con permisos para desplegar recursos Lambda y API Gateway
